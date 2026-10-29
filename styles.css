@@ -108,10 +108,14 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--red); outline-o
 .illustration-stage::before, .illustration-stage::after { position: absolute; z-index: 0; content: ''; border: 1px solid rgba(33, 30, 28, .1); border-radius: 50%; }
 .illustration-stage::before { width: 75%; aspect-ratio: 1; }
 .illustration-stage::after { width: 97%; aspect-ratio: 1; border-color: rgba(200, 52, 45, .15); }
-.illustration-stage-image { background: #211e1c; }
-.illustration-stage-image::before { z-index: 2; inset: 0; width: auto; aspect-ratio: auto; border: 0; border-radius: 0; background: linear-gradient(180deg, rgba(24, 18, 18, .2), transparent 28%, transparent 72%, rgba(24, 18, 18, .56)); }
-.illustration-stage-image::after { display: none; }
-.stoic-image { position: absolute; z-index: 1; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 42%; }
+.illustration-sun { position: absolute; top: 12%; left: 28%; width: 44%; aspect-ratio: 1; border-radius: 50%; background: #d94637; }
+.stoic-doodle { position: relative; z-index: 2; width: min(95%, 440px); align-self: end; margin-bottom: -1.1rem; }
+.float-note { position: absolute; z-index: 3; padding: .42rem .62rem; border: 1px solid rgba(33, 30, 28, .16); background: #f9f6f0; color: var(--ink); font: .62rem var(--mono); }
+.note-left { top: 25%; left: 8%; transform: rotate(-8deg); }
+.note-right { top: 19%; right: 7%; color: var(--red); transform: rotate(7deg); }
+.float-star { position: absolute; z-index: 3; color: var(--red); }
+.star-one { top: 40%; left: 7%; font-size: 1.5rem; }
+.star-two { right: 8%; bottom: 22%; font-size: 1rem; }
 .illustration-label { position: absolute; z-index: 3; right: 1.3rem; bottom: 1.2rem; color: var(--paper); font: 500 .54rem var(--mono); letter-spacing: .1em; }
 .illustration-footer { padding-top: .1rem; }
 .illustration-footer span:last-child { color: var(--red); font-size: .9rem; }
@@ -144,11 +148,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--red); outline-o
 .button-icon { display: grid; width: 36px; height: 36px; place-items: center; background: var(--red); color: white; font-size: 1rem; transition: background .25s, transform .25s; }
 .breath-button:hover .button-icon { background: var(--red-dark); transform: rotate(45deg); }
 .ritual-hint { min-height: 1.2em; margin: 1rem 0 0; color: #9e958b; font: 1.64rem var(--mono); }
-.ritual-art { position: relative; width: min(100%, 560px); height: clamp(360px, 44vw, 540px); justify-self: end; }
-.cat-photo { position: absolute; z-index: 1; top: 8%; left: 1%; width: 64%; height: 82%; overflow: hidden; margin: 0; border: 8px solid var(--paper); background: #d5d4c5; box-shadow: 0 24px 60px rgba(0, 0, 0, .25); transform: rotate(-4deg); }
-.cat-photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: left center; filter: saturate(.82) contrast(.96); }
-.cat-photo figcaption { position: absolute; right: .45rem; bottom: .5rem; left: .45rem; padding: .5rem .55rem; background: rgba(244, 240, 232, .91); color: var(--ink); font: 500 .5rem var(--mono); letter-spacing: .08em; text-align: center; }
-.breath-visual { position: absolute; z-index: 2; top: 7%; right: -2%; display: grid; width: min(78%, 390px); aspect-ratio: 1; place-items: center; }
+.breath-visual { position: relative; display: grid; width: min(100%, 440px); aspect-ratio: 1; place-items: center; justify-self: center; }
 .breath-ring { position: absolute; border: 1px solid rgba(244, 240, 232, .18); border-radius: 50%; }
 .ring-outer { width: 90%; aspect-ratio: 1; }
 .ring-middle { width: 66%; aspect-ratio: 1; border-color: rgba(200, 52, 45, .65); transition: transform 4s cubic-bezier(.2, .7, .25, 1); }
@@ -191,7 +191,6 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--red); outline-o
   .stoic-grid { gap: 2.5rem; }
   .illustration-stage { min-height: 310px; }
   .ritual-inner { min-height: auto; grid-template-columns: 1fr; gap: 3rem; }
-  .ritual-art { width: min(100%, 540px); height: clamp(400px, 54vw, 520px); justify-self: center; }
 }
 
 @media (max-width: 680px) {
@@ -221,15 +220,14 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--red); outline-o
   .stoic-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   .illustration-card { padding: .75rem .75rem .7rem; }
   .illustration-stage { min-height: min(82vw, 370px); }
+  .stoic-doodle { width: 108%; max-width: 420px; }
   .quote-panel { padding: 1.5rem 0 .5rem; }
   .quote-mark { height: 3.4rem; font-size: 6.6rem; }
   .quote-panel blockquote { min-height: 0; font-size: clamp(1.75rem, 8vw, 2.45rem); }
   .quote-decoration { bottom: .3rem; }
   .ritual-inner { min-height: auto; grid-template-columns: 1fr; gap: 2.8rem; padding-block: 5.5rem 4.5rem; }
   .ritual-copy h2 { margin-bottom: 1.1rem; }
-  .ritual-art { width: min(100%, 560px); height: clamp(380px, 95vw, 540px); justify-self: center; }
-  .cat-photo { top: 7%; left: 2%; width: 64%; height: 82%; }
-  .breath-visual { top: 9%; right: -1%; width: min(78%, 350px); }
+  .breath-visual { width: min(85%, 360px); }
   .site-footer { min-height: 110px; flex-wrap: wrap; gap: .5rem; padding-block: 1.6rem; }
   .site-footer p { order: 3; width: 100%; }
 }
@@ -240,10 +238,6 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--red); outline-o
   .illustration-topline, .illustration-footer { font-size: .46rem; }
   .note-left { left: 4%; }
   .note-right { right: 4%; }
-}
-
-@media (max-width: 430px) {
-  .cat-photo { width: 70%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
